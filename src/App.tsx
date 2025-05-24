@@ -10,16 +10,16 @@ import OrganizerPortal from './pages/OrganizerPortal';
 function App() {
    return (
     <BrowserRouter>
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/events" element={<EventDiscovery />} />
-        <Route path="/mint" element={<BadgeMinting />} />
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/marketplace" element={<Marketplace />} />
-        <Route path="/organizer" element={<OrganizerPortal />} />
-      </Routes>
-    </Layout>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/events" element={<EventDiscovery />} />
+          <Route path="/mint" element={<BadgeMinting />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/organizer" element={<OrganizerPortal />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>     
   );
 }
