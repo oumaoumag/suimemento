@@ -14,4 +14,6 @@ function Home() {
     };
 
     // Mock event data // To be replaced with blockchain data letter
+    { id: 1, name: "AfroTech Summit", data: "2025-03-15"},
+    { id: 2, name: "Nairobi Music Fest", date: "2025-04-10"},
 }
