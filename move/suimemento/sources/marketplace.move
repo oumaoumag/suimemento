@@ -15,5 +15,14 @@ module suimemento::marketplace {
     seller: address,
   }
 
-  
+  public entry fun list_badge(badge: Badge, price: u64, ctx: &mut TxContext) {
+    let listing = Listing {
+      id: object::new(ctx),
+      badge_id: object::id(&badge),
+      price,
+      seller: tx_context::sender(ctx),
+    };
+    transfer::share_object(listing);
+    transfer::transfer(badge, tx_context::sender(ctx));
+  }
 }
