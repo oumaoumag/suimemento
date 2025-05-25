@@ -27,7 +27,7 @@ For a guide on building a Sui dApp, refer to the [Sui documentation](http://docs
 
 ## File Structure
 
-\`\`\`text
+```text
 src/
 ├── components/         # Reusable components (e.g., Layout)
 ├── pages/             # Page-specific components (Home, EventDiscovery, etc.)
@@ -42,7 +42,7 @@ move/
         ├── event.move     # Event management contract
         ├── badge.move     # NFT badge management contract
         └── marketplace.move # Marketplace functionality contract
-\`\`\`
+```
 
 ## Prerequisites
 
