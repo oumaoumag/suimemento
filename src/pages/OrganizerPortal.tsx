@@ -24,3 +24,8 @@ function OrganizerPortal() {
             tx.pure(badgeDesign),
           ],
         });
+        signAndExecute(
+            { transaction: tx },
+            { onSuccess: () => alert('Event created successfully!') }
+          );
+        };
