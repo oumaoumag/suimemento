@@ -6,7 +6,7 @@ module suimemento::event {
   use sui::tx_context::{Self, TxContext};
   use std::string::String;
 
-  struct Event has key {
+  public struct Event has key {
     id: UID,
     name: String,
     date: u64,
