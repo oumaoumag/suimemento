@@ -29,3 +29,43 @@ function OrganizerPortal() {
             { onSuccess: () => alert('Event created successfully!') }
           );
         };
+
+        return (
+            <div className="page organizer-portal">
+              <Heading size="8">Organizer Portal</Heading>
+              <Flex direction="column" gap="3">
+                <TextField.Root
+                  value={eventName}
+                  onChange={(e) => setEventName(e.target.value)}
+                  placeholder="Event Name"
+                />
+                <TextField.Root
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  placeholder="Event Date"
+                />
+                <TextField.Root
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="Location"
+                />
+                <TextField.Root
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Description"
+                />
+                <TextField.Root
+                  value={badgeDesign}
+                  onChange={(e) => setBadgeDesign(e.target.value)}
+                  placeholder="Badge Design URL"
+                />
+                <Button onClick={handleCreateEvent} disabled={isPending}>
+                  {isPending ? 'Creating...' : 'Create Event'}
+                </Button>
+              </Flex>
+            </div>
+          );
+        }
+        
+        export default OrganizerPortal;
