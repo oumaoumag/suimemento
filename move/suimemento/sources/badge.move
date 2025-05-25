@@ -24,4 +24,17 @@ module suimemento::badge {
     };
     transfer::transfer(badge, recipient);
   }
+
+  public entry fun claim_badge(event_id: ID, code: vector<u8>, recipient: &signer, ctx: &mut TxContext) {
+    // Placeholder: Verify code ( actual logic to be implemented)
+    assert!(code == b"valid_code", 1);
+    let badge = Badge {
+      id: object::new(ctx),
+      event_id,
+      name: string::utf8(b"Event Badge"),
+      owner: tx_context::sender(ctx),
+      level: 1,
+    };
+    transfer::transfer(badge, tx_context::sender(ctx));
+  }
 }
