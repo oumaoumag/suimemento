@@ -11,3 +11,16 @@ function OrganizerPortal() {
     const [description, setDescription] = useState('');
     const [badgeDesign, setBadgeDesign] = useState('');
     const { mutate: signAndExecute, isPending } = useSignAndExecuteTransaction();
+
+    const handleCreateEvent = () => {
+        const tx = new Transaction();
+        tx.moveCall({
+          target: `${TESTNET_EVENT_PACKAGE_ID}::event::create_event`,
+          arguments: [
+            tx.pure(eventName),
+            tx.pure.u64(new Date(date).getTime() / 1000), // Convert to Unix timestamp
+            tx.pure(location),
+            tx.pure(description),
+            tx.pure(badgeDesign),
+          ],
+        });
