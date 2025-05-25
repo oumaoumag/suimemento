@@ -7,3 +7,19 @@ function Marketplace() {
       { id: "0x202", name: "Tech Summit Badge", price: "8 SUI" },
     ];
     
+    return (
+        <div className="page marketplace">
+          <Heading size="8">Marketplace</Heading>
+          <Flex direction="column" gap="3">
+            {listings.map(listing => (
+              <div key={listing.id} className="listing-card">
+                <Text>{listing.name}</Text>
+                <Text>Price: {listing.price}</Text>
+              </div>
+            ))}
+          </Flex>
+        </div>
+      );
+    }
+
+    export default Marketplace;
