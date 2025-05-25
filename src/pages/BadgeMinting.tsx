@@ -19,3 +19,20 @@ function BadgeMinting() {
         { onSuccess: () => alert('Badge minted successfully!') }
       );
     };
+
+    return (
+        <div className="page badge-minting">
+          <Heading size="8">Mint Your Badge</Heading>
+          <Flex direction="column" gap="3">
+            <TextField.Root
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              placeholder="Enter your unique code"
+            />
+            <Button onClick={handleMint} disabled={isPending}>
+              {isPending ? 'Minting...' : 'Claim Badge'}
+            </Button>
+          </Flex>
+        </div>
+      );
+    }
