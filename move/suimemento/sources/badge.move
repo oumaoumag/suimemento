@@ -14,4 +14,14 @@ module suimemento::badge {
     level: u64,
   }
 
+    public entry fun mint_badge(event_id: ID, name: vector<u8>, recipient: address, ctx: &mut TxContext) {
+    let badge = Badge {
+      id: object::new(ctx),
+      event_id,
+      name: string::utf8(name),
+      owner: recipient,
+      level: 1,
+    };
+    transfer::transfer(badge, recipient);
+  }
 }
