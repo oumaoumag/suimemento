@@ -25,4 +25,11 @@ module suimemento::marketplace {
     transfer::share_object(listing);
     transfer::transfer(badge, tx_context::sender(ctx));
   }
+
+  public entry fun buy_badge(listing: &mut Listing, payment: Coin<SUI>, ctx: &mut TxContext) {
+    assert!(coin::value(&payment) >= listing.price, 1);
+    transfer::public_transfer(payment, listing.seller);
+    // TODO:
+    // implement actual badge transfer logic
+  }
 }
