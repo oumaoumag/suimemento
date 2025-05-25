@@ -1,36 +1,38 @@
-// Copyright (c) Mysten Labs, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-/// This example demonstrates a basic use of a shared object.
-/// Rules:
-/// - anyone can create and share a counter
-/// - everyone can increment a counter by 1
-/// - the owner of the counter can reset it to any value
-module counter::counter {
-  /// A shared counter.
-  public struct Counter has key {
+module suimemento::event {
+  use sui::object::{Self, UID};
+  use sui::transfer;
+  use sui::tx_context::{Self, TxContext};
+  use std::string::String;
+
+  struct Event has key {
     id: UID,
-    owner: address,
-    value: u64
+    name: String,
+    date: u64,
+    location: String,
+    organizer: address,
+    description: String,
+    badge_design: String,
   }
 
-  /// Create and share a Counter object.
-  public fun create(ctx: &mut TxContext) {
-    transfer::share_object(Counter {
+  public entry fun create_event(
+    name: vector<u8>,
+    date: u64,
+    location: vector<u8>,
+    description: vector<u8>,
+    badge_design: vector<u8>,
+    ctx: &mut TxContext
+  ) {
+    let event = Event {
       id: object::new(ctx),
-      owner: ctx.sender(),
-      value: 0
-    })
-  }
-
-  /// Increment a counter by 1.
-  public fun increment(counter: &mut Counter) {
-    counter.value = counter.value + 1;
-  }
-
-  /// Set value (only runnable by the Counter owner)
-  public fun set_value(counter: &mut Counter, value: u64, ctx: &TxContext) {
-    assert!(counter.owner == ctx.sender(), 0);
-    counter.value = value;
+      name: string::utf8(name),
+      date,
+      location: string::utf8(location),
+      organizer: tx_context::sender(ctx),
+      description: string::utf8(description),
+      badge_design: string::utf8(badge_design),
+    };
+    transfer::share_object(event);
   }
 }
