@@ -36,3 +36,5 @@ function BadgeMinting() {
         </div>
       );
     }
+
+    export default BadgeMinting;
