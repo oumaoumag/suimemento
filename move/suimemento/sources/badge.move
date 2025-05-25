@@ -37,4 +37,9 @@ module suimemento::badge {
     };
     transfer::transfer(badge, tx_context::sender(ctx));
   }
+
+  public entry fun upgrade_badge(badge: &mut Badge, ctx: &mut TxContext) {
+    assert!(badge.owner == tx_context::sender(ctx), 2);
+    badge.level = badge.level + 1;
+  }
 }
