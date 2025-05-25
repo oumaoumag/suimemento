@@ -8,7 +8,7 @@ module suimemento::marketplace {
   use sui::sui::SUI;
   use suimemento::badge::Badge;
 
-  struct Listing has key {
+ public struct Listing has key {
     id: UID,
     badge_id: ID,
     price: u64,
